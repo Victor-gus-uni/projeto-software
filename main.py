@@ -856,7 +856,12 @@ treeview.column("Logo", width=0, stretch=tkinter.NO)  # Ocultar a coluna de logo
 treeview.bind("<Double-1>", doubleclick_treeview)
 
 # Colocar a treeview na tela
-treeview.place(x=80, y=30)
+treeview.place(x=50, y=15, width=900, height=220)
+
+# Configuração de scroll para a treeview
+scrollbar = ttk.Scrollbar(frame_tabela, orient="vertical", command=treeview.yview)
+treeview.configure(yscrollcommand=scrollbar.set)
+scrollbar.place(x=950, y=15, height=220)
 
 id_label = tkinter.Label(frame_entrada_de_dados, text="Codigo:", fg="#507e91", font=("Arial", 15))
 id_label.place(x=80, y=15)
@@ -936,7 +941,7 @@ avaliar_positivo_btn.place(x=600, y=100)
 avaliar_negativo_btn = tkinter.Button(frame_entrada_de_dados, text="Desfavoritar", bg="red", fg="white",
                                       activebackground="red", activeforeground="white",
                                       command=lambda: avaliar_ong(int(id_entry.get()), 0))
-avaliar_negativo_btn.place(x=652, y=100)
+avaliar_negativo_btn.place(x=658, y=100)
 
 # Adicionando menubar
 menubar = Menu(tela_ongs, tearoff=0)
